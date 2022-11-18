@@ -9,6 +9,7 @@ import { registerLocaleData } from '@angular/common';
 import ptBr from '@angular/common/locales/pt';
 import { MoedaPipe } from './moeda.pipe';
 import { FiltroPesquisaPipe } from './filtro-pesquisa.pipe';
+import { AppRoutingModule } from './app-routing.module';
 
 //registerLocaleData(ptBr);
 
@@ -22,7 +23,8 @@ import { FiltroPesquisaPipe } from './filtro-pesquisa.pipe';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [
 //    { provide: LOCALE_ID, useValue: 'pt'},
