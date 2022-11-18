@@ -9,6 +9,7 @@
         <th>MARCA</th>
         <th>PREÇO</th>
         <th>VALIDADE</th>
+        <th>AÇÃO</th>
     </tr>
     <tr *ngFor="let prod of lista | filtroPesquisa:nomePesquisado">
         <td>{{prod.id}}</td>
@@ -16,6 +17,8 @@
         <td>{{prod.marca | uppercase}}</td>
         <td>{{prod.preco | moeda}}</td>
         <td>{{prod.validade | date:"dd/MM/yyyy"}}</td>
+        <td><a routerLink="/editar/{{prod.id}}">Editar</a></td>
+        <td><a routerLink="/tabela" (click)="deletar(prod.id)">Deletar</a></td>
     </tr>
 </table>
 <p *ngIf="lista.length <= 0"> NÃO HÁ PRODUTOS CADASTRADOS! </p>

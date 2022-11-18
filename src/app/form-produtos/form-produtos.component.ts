@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Produto } from '../produto';
 import { ProdutoService } from '../produto.service';
 
@@ -9,16 +9,26 @@ import { ProdutoService } from '../produto.service';
   styleUrls: ['./form-produtos.component.css']
 })
 export class FormProdutosComponent implements OnInit {
+  id!: number;
   mensagem = "";
   produto = new Produto();
 
   constructor(
     private produtoService: ProdutoService,
+    private route: ActivatedRoute,
     private router: Router  
   ) { }
 
   ngOnInit(): void {
+    this.id = +this.route.snapshot.params['id'];
     this.mensagem = "";
+    if(this.id) {      
+      const produto = this.produtoService.buscarPorId(this.id);
+      alert("Edicao do produto "+produto.nome);
+    }
+    else {
+      alert("Cadastrar novo produto...");
+    }
   }
 
   cadastrar() {

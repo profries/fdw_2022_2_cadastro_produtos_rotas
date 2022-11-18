@@ -19,4 +19,8 @@ export class TabelaProdutosComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  deletar(id: number){
+    this.servico.deletar(id);
+  }
+
 }
