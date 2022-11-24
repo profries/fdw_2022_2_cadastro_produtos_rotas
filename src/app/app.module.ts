@@ -10,6 +10,7 @@ import ptBr from '@angular/common/locales/pt';
 import { MoedaPipe } from './moeda.pipe';
 import { FiltroPesquisaPipe } from './filtro-pesquisa.pipe';
 import { AppRoutingModule } from './app-routing.module';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 //registerLocaleData(ptBr);
 
@@ -19,7 +20,8 @@ import { AppRoutingModule } from './app-routing.module';
     TabelaProdutosComponent,
     FormProdutosComponent,
     MoedaPipe,
-    FiltroPesquisaPipe
+    FiltroPesquisaPipe,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
