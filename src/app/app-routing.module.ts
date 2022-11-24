@@ -6,8 +6,8 @@ import { FormProdutosComponent } from './form-produtos/form-produtos.component';
 
 const rotas: Routes = [
   { path: 'tabela', component: TabelaProdutosComponent },
-  { path: 'form', component: FormProdutosComponent },
-  { path: 'editar/:id', component: FormProdutosComponent}
+  { path: 'novo', component: FormProdutosComponent },
+  { path: 'edit/:id', component: FormProdutosComponent}
 ]
 
 @NgModule({

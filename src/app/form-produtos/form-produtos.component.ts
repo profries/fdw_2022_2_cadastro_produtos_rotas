@@ -12,6 +12,7 @@ export class FormProdutosComponent implements OnInit {
   id!: number;
   mensagem = "";
   produto = new Produto();
+  botaoAcao = "Cadastrar";
 
   constructor(
     private produtoService: ProdutoService,
@@ -22,24 +23,32 @@ export class FormProdutosComponent implements OnInit {
   ngOnInit(): void {
     this.id = +this.route.snapshot.params['id'];
     this.mensagem = "";
-    if(this.id) {      
-      const produto = this.produtoService.buscarPorId(this.id);
-      alert("Edicao do produto "+produto.nome);
-    }
-    else {
-      alert("Cadastrar novo produto...");
+    if(this.id) {
+      this.botaoAcao= "Editar";      
+      this.produto = Object.assign({}, 
+        this.produtoService.buscarPorId(this.id));
     }
   }
 
-  cadastrar() {
-    this.produtoService.inserir(this.produto);
-    this.mensagem = this.produto.nome + " cadastrado com sucesso!";
-    this.produto = new Produto();
+  private estaInserindo() {
+    return !this.id;
+  }
+
+  salvar() {
+    if(this.estaInserindo()) {
+      this.produtoService.inserir(this.produto);
+      this.mensagem = this.produto.nome + " cadastrado com sucesso!";
+      this.produto = new Produto();
+    }
+    else {
+      this.produtoService.editar(this.id, this.produto);
+      this.mensagem = this.produto.nome + " editado com sucesso!";
+
+    }
   }
 
   cancelar() {
     //Ir para a rota '/tabela'
     this.router.navigate(['/tabela']);
   }
-
 }
